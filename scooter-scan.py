@@ -48,14 +48,14 @@ def add_addr_to_known(dev_addr):
 
     if file_exists:
         with open(FILE_NAME) as file:
-            addresses = file.readlines()
+            addresses = [line.strip() for line in file]
 
         for addr in addresses:
             if addr == dev_addr:
                 return None
 
     f = open(FILE_NAME, "a")
-    f.write(dev_addr + '\n')
+    print(dev_addr, file=f)
     f.close()
 
 
@@ -83,13 +83,16 @@ def get_known_addr(devs):
     known_devices = []
 
     if file_exists:
+        print('file exists')
         with open(FILE_NAME) as file:
-            known_addr = file.readlines()
+            known_addr = [line.strip() for line in file]
 
-        for device in devs:
+        print('[%s]' % ', '.join(map(str, known_addr)))
+
+        for dev in devs:
             for addr in known_addr:
-                if device.addr == addr:
-                    known_devices.append(device)
+                if dev.addr == addr:
+                    known_devices.append(dev)
     else:
         raise Exception('No saved addresses in file ' + FILE_NAME)
 
