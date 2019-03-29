@@ -22,7 +22,9 @@ The second argument can be one the following commands:
    - `lock` - this locks the scooter
    - `unlock` - this unlocks the scooter
    
-Sudo is required to run the progarm in order to gain access to the lower bluetooth functions. 
+Hopefully more commmands will be added in the near future.   
+   
+Root is required to run the progarm in order to gain access to the system's lower bluetooth functions. 
 
 Example to run the program:
 
